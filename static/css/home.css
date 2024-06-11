@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* mac_* 样式 */
 
 /*延时加载*/

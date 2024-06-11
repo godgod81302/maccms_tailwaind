@@ -117,6 +117,11 @@ class Controller
      */
     protected function fetch($template = '', $vars = [], $replace = [], $config = [])
     {
+        
+        $split_arr = explode('@',$template);
+        if ( !empty($split_arr[1]) && $split_arr[0] ==='admin' && !empty(Config::get('default_admin_template')) ){
+            $template = 'admin@customui/'.Config::get('default_admin_template').'/'.$split_arr[1];
+        }
         return $this->view->fetch($template, $vars, $replace, $config);
     }
 

@@ -1,0 +1,20 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4442],{89302:function(n,i,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/docs/installation",function(){return e(58583)}])},58583:function(n,i,e){"use strict";e.r(i),e.d(i,{__N_SSG:function(){return r},default:function(){return h}});var l=e(85893),t=e(39897),s=e(72788),d=e(15236),c=e(41664),a=e.n(c);let o=[{title:"安装 Tailwind CSS",body:()=>(0,l.jsxs)("p",{children:["通过 npm 安装 ",(0,l.jsx)("code",{children:"tailwindcss"}),"，并创建你的 ",(0,l.jsx)("code",{children:"tailwind.config.js"})," 文件。"]}),code:{name:"Terminal",lang:"terminal",code:"npm install -D tailwindcss\nnpx tailwindcss init"}},{title:"配置模板路径",body:()=>(0,l.jsxs)("p",{children:["在 ",(0,l.jsx)("code",{children:"tailwind.config.js"})," 文件中添加所有模板文件的路径。"]}),code:{name:"tailwind.config.js",lang:"js",code:`  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+>   content: ["./src/**/*.{html,js}"],
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  }`}},{title:"将 Tailwind 指令添加到你的 CSS",body:()=>(0,l.jsxs)("p",{children:["将每个 Tailwind 层的 ",(0,l.jsx)("code",{children:"@tailwind"})," 指令添加到你的主 CSS 文件中。"]}),code:{name:"src/input.css",lang:"css",code:"@tailwind base;\n@tailwind components;\n@tailwind utilities;"}},{title:"启动 Tailwind CLI 构建进程",body:()=>(0,l.jsx)("p",{children:"运行 CLI 工具以扫描模板文件中的类并构建 CSS。"}),code:{name:"Terminal",lang:"terminal",code:"npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"}},{title:"开始在你的 HTML 中使用 Tailwind",body:()=>(0,l.jsxs)("p",{children:["将已编译的 CSS 文件添加到 ",(0,l.jsx)("code",{children:"<head>"})," 并开始使用 Tailwind 的工具类来设置内容的样式。"]}),code:{name:"src/index.html",lang:"html",code:`  <!doctype html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+>   <link href="./output.css" rel="stylesheet">
+  </head>
+  <body>
+>   <h1 class="text-3xl font-bold underline">
+>     Hello world!
+>   </h1>
+  </body>
+  </html>`}}];var r=!0;function h({code:n}){return(0,l.jsxs)(d.l,{children:[(0,l.jsxs)("div",{id:"content-wrapper",className:"relative z-10 max-w-3xl mb-16 prose prose-slate dark:prose-dark",children:[(0,l.jsx)("h3",{className:"sr-only",children:"Installing Tailwind CLI"}),(0,l.jsxs)("p",{children:["从头开始启动和运行 Tailwind CSS 的最简单、最快速的方法是使用 Tailwind CLI 工具。 如果你想在不安装 Node.js 的情况下使用 CLI，它也可以作为",(0,l.jsx)(a(),{href:"/blog/standalone-cli",children:"独立的可执行文件"}),"使用。"]})]}),(0,l.jsx)(t.R,{level:4,steps:o,code:n})]})}h.layoutProps={meta:{title:"安装",description:"从头开始启动和运行 Tailwind CSS 的最简单、最快速的方法是使用 Tailwind CLI 工具。"},Layout:s.L,allowOverflow:!1}}},function(n){n.O(0,[9495,7308,7667,5236,9774,2888,179],function(){return n(n.s=89302)}),_N_E=n.O()}]);

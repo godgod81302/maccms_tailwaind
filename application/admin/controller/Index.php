@@ -95,6 +95,73 @@ class Index extends Base
         return $this->fetch('admin@index/index');
     }
 
+    public function test()
+    {
+        $menus = @include MAC_ADMIN_COMM . 'auth.php';
+
+        foreach($menus as $k1=>$v1){
+            foreach($v1['sub'] as $k2=>$v2){
+                if($v2['show'] == 1) {
+                    if(strpos($v2['action'],'javascript')!==false){
+                        $url = $v2['action'];
+                    }
+                    else {
+                        $url = url('admin/' . $v2['controller'] . '/' . $v2['action']);
+                    }
+                    if (!empty($v2['param'])) {
+                        $url .= '?' . $v2['param'];
+                    }
+                    if ($this->check_auth($v2['controller'], $v2['action'])) {
+                        $menus[$k1]['sub'][$k2]['url'] = $url;
+                    } else {
+                        unset($menus[$k1]['sub'][$k2]);
+                    }
+                }
+                else{
+                    unset($menus[$k1]['sub'][$k2]);
+                }
+            }
+
+            if(empty($menus[$k1]['sub'])){
+                unset($menus[$k1]);
+            }
+        }
+
+        $quickmenu = config('quickmenu');
+        if(empty($quickmenu)){
+            $quickmenu = mac_read_file( APP_PATH.'data/config/quickmenu.txt');
+            $quickmenu = explode(chr(13),$quickmenu);
+        }
+        if(!empty($quickmenu)){
+            $menus[1]['sub'][13] = ['name'=>lang('admin/index/quick_tit'), 'url'=>'javascript:void(0);return false;','controller'=>'', 'action'=>'' ];
+
+            foreach($quickmenu as $k=>$v){
+                if(empty($v)){
+                    continue;
+                }
+                $one = explode(',',trim($v));
+                if(substr($one[1],0,4)=='http' || substr($one[1],0,2)=='//'){
+
+                }
+                elseif(substr($one[1],0,1) =='/'){
+
+                }
+                elseif(strpos($one[1],'###')!==false || strpos($one[1],'javascript:')!==false){
+
+                }
+                else{
+                    $one[1] = url($one[1]);
+                }
+                $menus[1]['sub'][14 + $k] = ['name'=>$one[0], 'url'=>$one[1],'controller'=>'', 'action'=>'' ];
+            }
+        }
+        $this->assign('menus',$menus);
+        
+        $this->assign('title',lang('admin/index/title'));
+        return $this->fetch('admin@index/test');
+    }
+
+
     public function welcome()
     {
         $version = config('version');
